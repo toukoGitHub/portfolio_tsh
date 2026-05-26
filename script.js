@@ -69,6 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
     });
 
+
+
+    document.querySelectorAll('.video-card video').forEach((video) => {
+        video.addEventListener('play', () => {
+            document.querySelectorAll('.video-card video').forEach((otherVideo) => {
+                if (otherVideo !== video) otherVideo.pause();
+            });
+        });
+    });
+
     const contactForm = document.getElementById('contact-form');
     contactForm.addEventListener('submit', (event) => {
         event.preventDefault();
